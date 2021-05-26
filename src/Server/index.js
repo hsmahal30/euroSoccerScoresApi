@@ -79,11 +79,28 @@ app.get('/api/quarterFinalMatches/legTwo', (req, res) => {
     }
 })
 
-app.get("/api/standings", (req,res) => {
+app.get("/api/standings", async (req,res) => {
     try {
         const importStandings = require("../Standings/standings");
+        const tables = await importStandings.parseStandingsTable();
         return res.status(200).json({
-            result : await importStandings.parseStandingsTable(),
+            result : tables,
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            err: err.toString()
+        })
+    }
+})
+
+app.get("/api/clubs", async (req,res) => {
+    try {
+        const importClubs = require("../Standings/standings");
+        const clubs = await importClubs.parseClubInfo();
+        const clubInfoFiltered = clubs.filter(value => Object.keys(value).length !== 0);
+        return res.status(200).json({
+            result : clubInfoFiltered,
         })
     }
     catch(err){
