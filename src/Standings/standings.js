@@ -94,8 +94,6 @@ async function main(){
     // await downloadUclTableHtml()
     const table = await parseStandingsTable()
     const clubInfo = await parseClubInfo()
-    
-   // console.log("Done")
 
   //  const clubInfoFiltered = clubInfo.filter(value => Object.keys(value).length !== 0);
 }
