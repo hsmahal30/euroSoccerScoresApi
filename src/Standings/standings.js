@@ -90,19 +90,15 @@ async function parseClubInfo(){
 }
 
 async function main(){
-    console.log('Starting...')
-    await downloadUclTableHtml()
+    // console.log('Starting...')
+    // await downloadUclTableHtml()
     const table = await parseStandingsTable()
     const clubInfo = await parseClubInfo()
     
-    console.log("Done")
+   // console.log("Done")
 
-    const clubInfoFiltered = clubInfo.filter(value => Object.keys(value).length !== 0);
+  //  const clubInfoFiltered = clubInfo.filter(value => Object.keys(value).length !== 0);
 }
-
-//main();
-await downloadUclTableHtml()
-//const table = await parseStandingsTable()
-//const clubInfo = await parseClubInfo()
+//  main()
 
 module.exports = {parseStandingsTable, parseClubInfo}
