@@ -83,7 +83,7 @@ app.get("/api/standings", (req,res) => {
     try {
         const importStandings = require("../Standings/standings");
         return res.status(200).json({
-            result : importStandings.parseStandingsTable(),
+            result : await importStandings.parseStandingsTable(),
         })
     }
     catch(err){
