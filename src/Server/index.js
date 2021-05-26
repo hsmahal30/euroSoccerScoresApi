@@ -79,6 +79,20 @@ app.get('/api/quarterFinalMatches/legTwo', (req, res) => {
     }
 })
 
+app.get("/api/standings", (req,res) => {
+    try {
+        const importStandings = require("../Standings/standings");
+        return res.status(200).json({
+            result : importStandings.parseStandingsTable(),
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            err: err.toString()
+        })
+    }
+})
+
 app.listen(port, () => {
     console.log(`Running on http://localhost:${port}`);
 })

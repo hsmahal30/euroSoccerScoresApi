@@ -91,17 +91,18 @@ async function parseClubInfo(){
 
 async function main(){
     console.log('Starting...')
-
     await downloadUclTableHtml()
-
-    console.log("Done")
-
     const table = await parseStandingsTable()
     const clubInfo = await parseClubInfo()
     
-    const clubInfoFiltered = clubInfo.filter(value => Object.keys(value).length !== 0);
+    console.log("Done")
 
-    console.log(table)
+    const clubInfoFiltered = clubInfo.filter(value => Object.keys(value).length !== 0);
 }
 
-main();
+//main();
+await downloadUclTableHtml()
+//const table = await parseStandingsTable()
+//const clubInfo = await parseClubInfo()
+
+module.exports = {parseStandingsTable, parseClubInfo}
