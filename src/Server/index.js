@@ -1,13 +1,9 @@
 const express = require('express');
 const app = express();
-// const port = 8080;
 let port = process.env.PORT || 8080;
 const path = require('path');
 
-
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname+'/home.html'))
-})
+app.use(express.static("../public"));
 
 app.get('/api/finalMatches', (req,res) => {
     try {
